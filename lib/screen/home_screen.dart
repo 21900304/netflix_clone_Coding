@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
+import 'package:netflix_clonecode/widget/circle_slider.dart';
 
 import '../model/model_movie.dart';
+import '../widget/box_slider.dart';
 import '../widget/carousel_slider.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -47,8 +49,14 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return ListView(
         children:[
-          CarouseImage(movies : movies),
-          TapBar()
+          Stack(
+            children: [
+              CarouseImage(movies : movies),
+              TapBar()
+            ],
+          ),
+          CircleSlider(movies: movies),
+          BoxSlider(movies: movies)
         ]);
   }
 }
