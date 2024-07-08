@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 
 import '../model/model_movie.dart';
+import '../widget/carousel_slider.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -15,9 +16,26 @@ class _HomeScreenState extends State<HomeScreen> {
       'title' : '사랑의 불시착',
       'keyword' : '사랑/로맨스/판타지',
       'poster' : 'test_movie_1.png',
-      'like' : 'false',
-    }
-    )
+      'like' : false,
+    }),
+    Movie.fromMap({
+      'title' : '사랑의 불시착',
+      'keyword' : '사랑/로맨스/판타지',
+      'poster' : 'test_movie_1.png',
+      'like' : false,
+    }),
+    Movie.fromMap({
+      'title' : '사랑의 불시착',
+      'keyword' : '사랑/로맨스/판타지',
+      'poster' : 'test_movie_1.png',
+      'like' : false,
+    }),
+    Movie.fromMap({
+      'title' : '사랑의 불시착',
+      'keyword' : '사랑/로맨스/판타지',
+      'poster' : 'test_movie_1.png',
+      'like' : false,
+    }),
   ]; // 더미 데이터를 만드는 이뉴는 추후 DB와의 연동에서 실제로 가져오는 데이터를 그대로 처리하기 위함
 
   @override
@@ -27,7 +45,11 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return TapBar();
+    return ListView(
+        children:[
+          CarouseImage(movies : movies),
+          TapBar()
+        ]);
   }
 }
 
