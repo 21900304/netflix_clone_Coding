@@ -1,9 +1,17 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:netflix_clonecode/screen/home_screen.dart';
 import 'package:netflix_clonecode/screen/more_screen.dart';
 import 'package:netflix_clonecode/widget/bottom_bar.dart';
 
-void main() {
+import 'firebase_options.dart';
+
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
+
   runApp( MyApp());
 }
 
