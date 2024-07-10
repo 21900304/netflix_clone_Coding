@@ -1,15 +1,21 @@
-class Movie{
-  final String title; // final : 변경할 수 없는 값
-  final String keyword; // late: 변수를 나중에 초기화할 것임을 컴파일러에게 알려줌
+import 'package:cloud_firestore/cloud_firestore.dart';
+
+class Movie {
+  final String title;
+  final String keyword;
   final String poster;
   final bool like;
+  final DocumentReference reference;
 
-  Movie.fromMap(Map<String, dynamic> map)
-    :   title = map['title'],
+  Movie.fromMap(Map<String, dynamic> map, {required this.reference})
+      : title = map['title'],
         keyword = map['keyword'],
         poster = map['poster'],
         like = map['like'];
 
-  @override // 상위 class의 method를 재정의하기 위해 명시적으로 선언
-  String toString() => "Movie<$title: $keyword>"; // 객체를 문자열로 반환
+  Movie.fromSnapshot(DocumentSnapshot snapshot)
+      : this.fromMap(snapshot.data as Map<String, dynamic>,reference: snapshot.reference);
+
+  @override
+  String toString() => "Movie<$title:$keyword>";
 }
